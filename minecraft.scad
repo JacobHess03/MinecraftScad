@@ -3,16 +3,16 @@
 // WRITE YOUR NAME HERE
 word = "STEVE";
 // Scale factor for the whole word
-scale_factor = 1;    
+scale_factor = 0.5;    
 // Spacing between letters
 spacing = 2;
 // Thickness of the letters           
-thickness = 15;         
+thickness = 10;         
 // --------------------------- RENDERING ------------------------------
 // Outline thickness for the brim
-outline_thickness_val = 10; 
+outline_thickness_val = 5; 
 // Height of the letters
-letter_height_val = -1; 
+letter_height_val = -2; 
 outline_height_val = max(thickness, 11);
 
 // ----------------------------- GLYPHS -----------------------------
