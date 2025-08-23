@@ -10,7 +10,7 @@ spacing = 2;
 thickness = 10;         
 // --------------------------- RENDERING ------------------------------
 // Outline thickness for the brim
-outline_thickness_val = 5; 
+outline_thickness_val = 7; 
 // Height of the letters
 letter_height_val = -3; 
 outline_height_val = max(thickness, 11);
@@ -2365,7 +2365,7 @@ module glyph_X() {
 }
 module glyph_apostrophe() {
     rotate([0, 0, 45]){
-        translate([-50, 25, 0]){
+        translate([-55, 30, 0]){
     polygon(points = [
         [63.338, -66.111],
         [76.897, -66.163],
