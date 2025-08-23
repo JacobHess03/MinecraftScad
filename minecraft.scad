@@ -3,7 +3,7 @@
 // WRITE YOUR NAME HERE
 word = "STEVE";
 // Scale factor for the whole word
-scale_factor = 0.5;    
+scale_factor = 0.8;    
 // Spacing between letters
 spacing = 2;
 // Thickness of the letters           
@@ -12,7 +12,7 @@ thickness = 10;
 // Outline thickness for the brim
 outline_thickness_val = 5; 
 // Height of the letters
-letter_height_val = -2; 
+letter_height_val = -3; 
 outline_height_val = max(thickness, 11);
 
 // ----------------------------- GLYPHS -----------------------------
@@ -697,7 +697,7 @@ module glyph_H() {
 
 module glyph_I() {
     union() {
-        translate([-5, 0, 0]){
+        translate([-10, 0, 0]){
         polygon(points = [
             [63.683, -38.930],
             [76.630, -38.931],
@@ -2365,7 +2365,7 @@ module glyph_X() {
 }
 module glyph_apostrophe() {
     rotate([0, 0, 45]){
-        translate([-45, 35, 0]){
+        translate([-50, 25, 0]){
     polygon(points = [
         [63.338, -66.111],
         [76.897, -66.163],
@@ -2399,9 +2399,9 @@ brim_height_val = 0;
 // Dictionary to associate glyph name with its width in "glyph units"
 // These values are used to calculate horizontal spacing.
 glyph_metadata = [
-    ["A", 41.135], ["B", 40.449], ["C", 40.639], ["D", 40.938], ["E", 40.082], ["F", 41.849], ["G", 40.938], ["H", 42.450], ["I", 32.938], ["J", 36.671],
+    ["A", 41.135], ["B", 40.449], ["C", 40.639], ["D", 40.938], ["E", 42.082], ["F", 41.849], ["G", 40.938], ["H", 42.450], ["I", 22.938], ["J", 36.671],
     ["K", 40.669], ["L", 36.669], ["M", 56.121], ["N", 45.634], ["O", 40.892], ["P", 37.976], ["Q", 41.038], ["R", 40.665], ["S", 39.183], ["T", 40.391],
-    ["U", 40.947], ["V", 47.484], ["W", 55.826], ["X", 41.805], ["Y", 41.417], ["Z", 39.326], ["'", 40.0]
+    ["U", 40.947], ["V", 47.484], ["W", 55.826], ["X", 41.805], ["Y", 41.417], ["Z", 39.326], ["'", 0]
 ];
 
 // Function to obtain width of glyph
@@ -2445,7 +2445,7 @@ module place_glyph(name, x, scale_factor = 1, thickness = 10) {
         else if (name == "Z") glyph_Z();
         else if (name == "'") glyph_apostrophe();
         else {
-            echo(str("Errore: glifo non trovato: ", name));
+            echo(str("Error: glyph not found ", name));
             square(size = 100); // placeholder per glifi non definiti
         }
     }
@@ -2501,9 +2501,8 @@ function total_text_width(text, scale_factor, spacing) =
 module compose_text_2d(text, scale_factor = 1, spacing = 2) {
     union() {
         total = total_text_width(text, scale_factor, spacing);
-        start_x = -1.5*total / 2; // punto di partenza per centrare la parola
+        start_x = -1.5*total / 2; // first position for centering the text
 
-        // posizionamento: offset per il carattere i
         positions = [
             for (i = [0:len(text)-1])
                 [ text[i],
