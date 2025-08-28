@@ -1,32 +1,19 @@
-
-// --------------------------- PARAMETRES ------------------------------
-// WRITE YOUR NAME HERE
+/*[Write your name here, only UPPERCASE -> example: STEVE]*/
 word1 = "STEVE";
-// Ring position
-// You can change these values to move the ring mm
-ring_x = -70;
-ring_y = -9.5;
+/*[Parametres ring position]*/
+ring_x = -32.5;
+ring_y = -12.8;
 ring_z = 0;
-// Scale factor for the whole word
-scale_factor = 0.15;    
-// Spacing between letters
-spacing = 2;
-// Thickness of the letters           
-thickness = 5;         
-// --------------------------- RENDERING ------------------------------
-// Outline thickness for the brim
-outline_thickness_val = 2; 
-// Height of the letters
-letter_height_val = -2; 
-// Height of the outline
-outline_height_val = 6;
+
 
 // ----------------------------- GLYPHS -----------------------------
+
 module glyph_ring() {
     // Parametri interni
-    outer_d = 10;   // diametro esterno
+    outer_d = 7;   // diametro esterno
     hole_d  = 3;    // diametro foro
     fn      = 32;   // risoluzione cerchio
+    outline_height_val = 6;
     
     // estrusione unica 3D con foro
     linear_extrude(height = outline_height_val)
@@ -2411,9 +2398,7 @@ module glyph_apostrophe() {
     }
 }
 
-// parametres of the brim
-brim_width_val = 0;
-brim_height_val = 0;
+
 // --------------------------- METADATA ------------------------------
 // Dictionary to associate glyph name with its width in "glyph units"
 // These values are used to calculate horizontal spacing.
@@ -2423,8 +2408,23 @@ glyph_metadata = [
     
     ["U", 40.947], ["V", 47.484], ["W", 55.826], ["X", 41.805], ["Y", 41.417], ["Z", 39.326], ["'", 0], ["o", 0]
 ];
-
+// Scale factor for the whole word
+scale_factor = 0.2;    
+// Spacing between letters
+spacing = 2;
+// Thickness of the letters           
+thickness = 5;         
+// --------------------------- RENDERING ------------------------------
+// Outline thickness for the brim
+outline_thickness_val = 2.5; 
+// Height of the letters
+letter_height_val = -2; 
+// Height of the outline
+outline_height_val = 6;
 // prova
+// parametres of the brim
+brim_width_val = 0;
+brim_height_val = 0;
 word = str("o", word1);   // l’utente scrive solo "STEVE", tu aggiungi "o"
 // Function to obtain width of glyph
 function get_glyph_width(name) =
